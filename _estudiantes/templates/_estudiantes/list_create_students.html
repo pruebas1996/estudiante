@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD STUDENTS</title>
+</head>
+<body>
+  <form method="POST" action="{% url 'students:list_create' %}" >
+        {% csrf_token %}
+         <div class="form-group">
+            <label for="identification">Identification</label>
+            <input type="text" class="form-control" name="identification" >
+         </div>
+         <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" >
+         </div>
+         <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" >
+         </div>
+         <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" class="form-control" name="email" >
+         </div>
+         <div class="form-group">
+            <label for="telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" >
+         </div>
+         <div class="form-group">
+            <label for="DateOfBirth">Date Of Birth</label>
+            <input type="date" class="form-control" name="dateOfBirth" >
+         </div>
+         <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="address" >
+         </div>
+         <div class="text-right">
+            <button type="submit" class="btn">Save</button>
+         </div>
+    </form>
+    <table border="">
+        <tr>
+            <th>ID<th/>
+            <th>Name<th/>
+            <th>Last Name<th/>
+            <th>E-mail<th/>
+            <th>Telephone<th/>
+            <th>Address<th/>
+            <th>Date Of Birth<th/>
+        <tr/>
+        {% for student in students %}
+          <tr>
+              <td>{{student.identification}}<td/>
+              <td>{{student.name}}<td/>
+              <td>{{student.lastname}}<td/>
+              <td>{{student.email}}<td/>
+              <td>{{student.telephone}}<td/>
+              <td>{{student.address}}<td/>
+              <th>{{student.DateOfBirth}}<th/>
+          <tr/>
+        {% endfor %}
+    </table>
+</body>
+</html>

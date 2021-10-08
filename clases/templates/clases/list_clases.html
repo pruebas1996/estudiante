@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list of class</title>
+</head>
+<body>
+<form method="POST" action="{% url 'class:list_class' %}" >
+        {% csrf_token %}
+         <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" >
+         </div>
+         <div class="form-group">
+            <label for="theme">Theme</label>
+            <input type="text" class="form-control" name="theme" >
+         </div>
+         <div class="form-group">
+            <label for="schedule">Schedule</label>
+            <input type="text" class="form-control" name="schedule" >
+         </div>
+         <div class="text-right">
+            <button type="submit" class="btn">Save</button>
+         </div>
+    </form>
+    <table border="">
+        <tr>
+            <th>Name<th/>
+            <th>Theme<th/>
+            <th>Active<th/>
+            <th>Schedule<th/>
+        <tr/>
+        {% for class in lessons %}
+          <tr>
+
+              <td>{{class.name}}<td/>
+              <td>{{class.theme}}<td/>
+              <td>{{class.active}}<td/>
+              <td>{{class.schedule}}<td/>
+
+          <tr/>
+        {% endfor %}
+    </table>
+</body>
+</html>
